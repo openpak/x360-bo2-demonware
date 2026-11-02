@@ -47,3 +47,11 @@ From `onModuleInit()` in `src/app.module.ts`. Each ID is the service type the di
 | 81 | `simple.handlers.ts` (`handleLeague`) |
 
 All handlers live in `src/application/handlers/`. On disconnect, the matchmaking session is cleaned up and the player's stats cache is flushed.
+
+## Title ID
+
+The code uses `TITLE_ID = 0x415608c3` (`src/core/bb-constants.ts`). `files/` holds TU18 assets (`online_tu18_mp_english.wad`, `online_tu18_zm_english.wad`, `en_ffotd_tu18_*`); no file in `src/` references `files/`.
+
+## Stack
+
+NestJS + TypeScript; MongoDB for stats files, sessions and clips; a custom TCP server for the binary protocol (not HTTP); a bit-level DDL parser for BO2's stats format. Stats are cached write-back (5-minute flush to MongoDB, instant replies to the game).
